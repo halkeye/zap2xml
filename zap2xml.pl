@@ -1173,7 +1173,7 @@ sub parseTVGGrid {
         if (!defined($stations{$cs}{stnNum})) {
             $stations{$cs}{stnNum} = $src;
             $stations{$cs}{number} = $num;
-            $stations{$cs}{name} = $cjs->{'Name'};
+            $stations{$cs}{name} = $cjs->{'Name'} || $cjs->{'affiliateName'};
             if (defined($cjs->{'FullName'}) && $cjs->{'FullName'} ne $cjs->{'Name'}) {
                 if ($cjs->{'FullName'} ne '') {
                     $stations{$cs}{fullname} = $cjs->{'FullName'};
