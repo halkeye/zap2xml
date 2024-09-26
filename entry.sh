@@ -43,6 +43,8 @@ while true; do
         rm -rf /tmp/xmltv
         echo 'Done.'
     fi
-    echo "Will run again in $SLEEPTIME seconds."
-    sleep "$SLEEPTIME"
+    if [ "$SLEEPTIME" -gt 0 ]; then
+        echo "Will run again in $SLEEPTIME seconds."
+        sleep "$SLEEPTIME"
+    fi
 done
