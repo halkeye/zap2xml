@@ -29,23 +29,23 @@ ENV OPT_ARGS=
 ENV SLEEPTIME=43200
 
 RUN echo '@edge https://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
-    apk add --no-cache \
-        ca-certificates@edge \
-        perl@edge \
-        perl-html-parser@edge \
-        perl-http-cookies@edge \
-        perl-io-socket-ssl@edge \
-        perl-json@edge \
-        perl-json-xs@edge \
-        perl-libwww@edge \
-        perl-lwp-protocol-https@edge \
-        perl-lwp-useragent-determined@edge \
-        perl-mozilla-ca@edge \
-        perl-net-http@edge \
-        perl-net-libidn@edge \
-        perl-net-ssleay@edge \
-        perl-uri@edge \
-        xmltv@edge
+  apk add --no-cache \
+  ca-certificates \
+  perl \
+  perl-html-parser \
+  perl-http-cookies \
+  perl-io-socket-ssl \
+  perl-json \
+  perl-json-xs \
+  perl-libwww \
+  perl-lwp-protocol-https \
+  perl-lwp-useragent-determined \
+  perl-mozilla-ca \
+  perl-net-http \
+  perl-net-libidn \
+  perl-net-ssleay \
+  perl-uri \
+  xmltv@edge
 
 VOLUME /data
 ADD zap2xml.pl entry.sh /
