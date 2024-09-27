@@ -3,19 +3,6 @@ name: zap2xml CI
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  documentation:
-    name: Attach Documentation
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-          submodules: 'false'
-
-      - name: Attach Documentation
-        run: cat .github/workflows/README.md >> $GITHUB_STEP_SUMMARY
-
   build:
     name: Build and Push zap2xml
     runs-on: ubuntu-latest
