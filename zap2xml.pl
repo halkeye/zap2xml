@@ -488,6 +488,7 @@ sub printChannels {
     for my $key ( sort sortChan keys %stations ) {
         $sname = &enc($stations{$key}{name});
         $fname = &enc($stations{$key}{fullname});
+        $aname = &enc($stations{$key}{affiliateName});
         $snum = $stations{$key}{number};
         print $FH "\t<channel id=\"" . &stationToChannel($key) . "\">\n";
         print $FH "\t\t<display-name>" . $sname . "</display-name>\n" if defined($options{F}) && defined($sname);
@@ -498,6 +499,7 @@ sub printChannels {
         }
         print $FH "\t\t<display-name>" . $sname . "</display-name>\n" if !defined($options{F}) && defined($sname);
         print $FH "\t\t<display-name>" . $fname . "</display-name>\n" if (defined($fname));
+        print $FH "\t\t<display-name>" . $aname . "</display-name>\n" if (defined($aname));
         if (defined($stations{$key}{logoURL})) {
             print $FH "\t\t<icon src=\"" . $stations{$key}{logoURL} . "\" />\n";
         }
@@ -1173,10 +1175,15 @@ sub parseTVGGrid {
         if (!defined($stations{$cs}{stnNum})) {
             $stations{$cs}{stnNum} = $src;
             $stations{$cs}{number} = $num;
-            $stations{$cs}{name} = $cjs->{'Name'} || $cjs->{'affiliateName'};
+            $stations{$cs}{name} = $cjs->{'Name'};
             if (defined($cjs->{'FullName'}) && $cjs->{'FullName'} ne $cjs->{'Name'}) {
                 if ($cjs->{'FullName'} ne '') {
                     $stations{$cs}{fullname} = $cjs->{'FullName'};
+                }
+            }
+            if (defined($cjs->{'affiliateName'}) && $cjs->{'affiliateName'} ne $cjs->{'Name'}) {
+                if ($cjs->{'affiliateName'} ne '') {
+                    $stations{$cs}{affiliateName} = $cjs->{'affiliateName'};
                 }
             }
 
