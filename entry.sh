@@ -1,4 +1,5 @@
 #!/bin/sh
+[ "${DEBUG:-false}" = "true" ] && set -x
 
 download() {
     MOD_TIME='0'
