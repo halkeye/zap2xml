@@ -7,7 +7,7 @@ download() {
     while true; do
         RUN_TIME="$(date '+%s')"
         # shellcheck disable=SC2086
-        /zap2xml.pl -u "$1" -p "$2" -U -o "$3" -c "$(echo "$1" | tr -d '-_@.+')" $OPT_ARGS
+        /zap2xml.pl -u "$1" -p "$2" -U -o "$3" -c "$(echo "$1" | tr -d -- '-_@.+')" $OPT_ARGS
         printf 'Run time: '
         date -d "@$RUN_TIME" '+%F %T %Z'
         if [ -f "$3" ]; then
