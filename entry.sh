@@ -15,6 +15,9 @@ download() {
         fi
         if test "$MOD_TIME" -lt "$RUN_TIME"; then
             echo "This run did not complete successfully, trying again in $RETRY_INTERVAL seconds..."
+            if [ "$SLEEPTIME" -eq 0 ]; then
+                exit 1
+            fi
             sleep "$RETRY_INTERVAL"
             RETRY_INTERVAL="$(( RETRY_INTERVAL * 2 ))"
             if test "$RETRY_INTERVAL" -gt "$SLEEPTIME"; then
