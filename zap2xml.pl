@@ -1181,11 +1181,6 @@ sub parseTVGGrid {
                     $stations{$cs}{fullname} = $cjs->{'FullName'};
                 }
             }
-            if (defined($cjs->{'affiliateName'}) && $cjs->{'affiliateName'} ne $cjs->{'Name'}) {
-                if ($cjs->{'affiliateName'} ne '') {
-                    $stations{$cs}{affiliateName} = $cjs->{'affiliateName'};
-                }
-            }
 
             if (!defined($stations{$cs}{order})) {
                 if (defined($options{b})) {
@@ -1316,7 +1311,7 @@ sub parseJSON {
             $stations{$cs}{name} = $s->{'callSign'};
             $stations{$cs}{number} = $s->{'channelNo'};
             $stations{$cs}{number} =~ s/^0+//g;
-
+            $stations{$cs}{affiliateName} = $s->{'affiliateName'} if defined($s->{'affiliateName'});
             if (!defined($stations{$cs}{order})) {
                 if (defined($options{b})) {
                     $stations{$cs}{order} = $coNum++;
